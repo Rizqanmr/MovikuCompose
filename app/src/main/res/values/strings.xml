@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">MovikuCompose</string>
+    <string name="poster_movie">Poster Movie</string>
+    <string name="try_again">Try Again</string>
+    <string name="backdrop_movie">Backdrop Movie</string>
+    <string name="overview">Overview</string>
+    <string name="release_date">Release Date</string>
+    <string name="detail_movie">Detail Movie</string>
+    <string name="official_trailer">Official Trailer</string>
+    <string name="review">Reviews</string>
+    <string name="reviewer_avatar">Reviewer Avatar</string>
+    <string name="read_all_review">Read All Review</string>
+    <string name="no_data_available">No data available</string>
 </resources>
