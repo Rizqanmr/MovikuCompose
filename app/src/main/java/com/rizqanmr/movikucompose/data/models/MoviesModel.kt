@@ -1,6 +1,7 @@
-package com.rizqanmr.movikucompose.data
+package com.rizqanmr.movikucompose.data.models
 
 import android.annotation.SuppressLint
+import com.rizqanmr.movikucompose.data.Constant
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import java.math.BigDecimal

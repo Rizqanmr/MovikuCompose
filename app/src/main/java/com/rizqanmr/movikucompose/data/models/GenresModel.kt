@@ -1,4 +1,4 @@
-package com.rizqanmr.movikucompose.data
+package com.rizqanmr.movikucompose.data.models
 
 import com.squareup.moshi.JsonClass
 
