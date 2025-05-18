@@ -8,4 +8,5 @@ object Constant {
 
     const val NO_DATA = "Data not found"
     const val NO_CONNECTION = "No internet connection"
+    const val SOMETHING_WRONG = "Something went wrong"
 }

@@ -1,4 +1,4 @@
-package com.rizqanmr.movikucompose.ui.components
+package com.rizqanmr.movikucompose.ui.screens.main
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

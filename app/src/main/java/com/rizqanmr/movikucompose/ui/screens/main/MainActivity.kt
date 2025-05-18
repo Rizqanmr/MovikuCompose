@@ -12,8 +12,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import com.example.movikucompose.R
-import com.rizqanmr.movikucompose.ui.components.TabWithPager
-import com.rizqanmr.movikucompose.ui.components.TopAppBar
+import com.rizqanmr.movikucompose.ui.screens.home.TabWithPager
 import com.rizqanmr.movikucompose.ui.theme.MovikuComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
