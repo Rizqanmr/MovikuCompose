@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.rizqanmr.movikucompose.ui.components.ShimmerTab
 import com.rizqanmr.movikucompose.ui.theme.LightRed
 import kotlinx.coroutines.launch
@@ -28,6 +29,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun TabWithPager(viewModel: HomeViewModel = hiltViewModel()) {
     val genres by viewModel.genres.collectAsState()
+    val movies = viewModel.movies.collectAsLazyPagingItems()
 
     val pagerState = rememberPagerState(pageCount = { genres.size })
     val coroutineScope = rememberCoroutineScope()
@@ -89,6 +91,11 @@ fun TabWithPager(viewModel: HomeViewModel = hiltViewModel()) {
             modifier = Modifier.fillMaxSize()
         ) { page ->
             // Content for each page
+            val genre = genres.getOrNull(page)
+            genre?.let {
+                viewModel.onGenreSelected(it.id ?: 0)
+                MovieList(movies = movies)
+            }
             Box(
                 modifier = Modifier
                     .fillMaxSize()
