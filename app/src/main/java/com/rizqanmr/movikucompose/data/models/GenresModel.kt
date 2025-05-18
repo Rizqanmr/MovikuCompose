@@ -1,14 +1,13 @@
 package com.rizqanmr.movikucompose.data.models
 
-import com.squareup.moshi.JsonClass
+import com.google.gson.annotations.SerializedName
 
-@JsonClass(generateAdapter = true)
+
 data class GenresModel(
-    val genres: List<GenresItem>?
+    @SerializedName("genres") val genres: List<GenresItem>?
 )
 
-@JsonClass(generateAdapter = true)
 data class GenresItem(
-    val name: String? = "",
-    val id: Int? = 0
+    @SerializedName("name") val name: String? = "",
+    @SerializedName("id") val id: Int? = 0
 )

@@ -96,17 +96,6 @@ fun TabWithPager(viewModel: HomeViewModel = hiltViewModel()) {
                 viewModel.onGenreSelected(it.id ?: 0)
                 MovieList(movies = movies)
             }
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "This is ${genres[page].name.orEmpty()} Page (ID: ${genres[page].id})",
-                    fontSize = 24.sp
-                )
-            }
         }
     }
 }

@@ -15,11 +15,11 @@ coroutines = "1.7.1"
 hilt = "2.50"
 paging-compose = "3.2.1"
 hilt-navigation-compose = "1.2.0"
-coil = "1.4.0"
+coil = "2.4.0"
 viewmodel-compose = "2.7.0"
 android-library = "7.4.1"
 hilt-android = "2.50"
-ksp = "1.9.0-1.0.12"
+ksp = "1.9.10-1.0.13"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -43,7 +43,7 @@ androidx-compose-runtime-livedata = { module = "androidx.compose.runtime:runtime
 # Retrofit & Moshi
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
-retrofit-moshi = { module = "com.squareup.retrofit2:converter-moshi", version = "2.6.2" }
+retrofit-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit" }
 moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
 moshi-ksp = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
 
