@@ -1,7 +1,7 @@
 package com.rizqanmr.movikucompose.di
 
-import com.rizqanmr.movikucompose.repository.MovieRepository
-import com.rizqanmr.movikucompose.repository.MovieRepositoryImpl
+import com.rizqanmr.movikucompose.data.repository.MovieRepository
+import com.rizqanmr.movikucompose.data.repository.MovieRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

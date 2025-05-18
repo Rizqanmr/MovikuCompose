@@ -1,6 +1,6 @@
 package com.rizqanmr.movikucompose.di
 
-import com.rizqanmr.movikucompose.network.ApiService
+import com.rizqanmr.movikucompose.data.ApiService
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides

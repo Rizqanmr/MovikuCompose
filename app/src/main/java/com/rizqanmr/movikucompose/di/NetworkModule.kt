@@ -1,7 +1,7 @@
 package com.rizqanmr.movikucompose.di
 
 import com.example.movikucompose.BuildConfig
-import com.rizqanmr.movikucompose.network.RetrofitProvider
+import com.rizqanmr.movikucompose.utils.network.RetrofitProvider
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

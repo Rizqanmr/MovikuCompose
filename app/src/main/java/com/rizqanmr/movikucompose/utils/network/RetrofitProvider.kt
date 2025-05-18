@@ -1,6 +1,7 @@
-package com.rizqanmr.movikucompose.network
+package com.rizqanmr.movikucompose.utils.network
 
 import com.example.movikucompose.BuildConfig
+import com.rizqanmr.movikucompose.data.ApiService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

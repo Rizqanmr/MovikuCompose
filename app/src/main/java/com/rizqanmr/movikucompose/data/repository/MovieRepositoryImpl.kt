@@ -1,6 +1,6 @@
-package com.rizqanmr.movikucompose.repository
+package com.rizqanmr.movikucompose.data.repository
 
-import com.rizqanmr.movikucompose.network.ApiService
+import com.rizqanmr.movikucompose.data.ApiService
 import com.squareup.moshi.Moshi
 import javax.inject.Inject
 
