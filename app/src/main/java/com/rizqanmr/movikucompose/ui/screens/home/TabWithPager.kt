@@ -16,18 +16,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.rizqanmr.movikucompose.ui.components.ShimmerTab
 import com.rizqanmr.movikucompose.ui.theme.LightRed
 import kotlinx.coroutines.launch
 
 @Composable
-fun TabWithPager(viewModel: HomeViewModel = hiltViewModel()) {
+fun TabWithPager(
+    viewModel: HomeViewModel = hiltViewModel(),
+    navController: NavController
+) {
     val genres by viewModel.genres.collectAsState()
     val movies = viewModel.movies.collectAsLazyPagingItems()
 
@@ -94,7 +96,7 @@ fun TabWithPager(viewModel: HomeViewModel = hiltViewModel()) {
             val genre = genres.getOrNull(page)
             genre?.let {
                 viewModel.onGenreSelected(it.id ?: 0)
-                MovieList(movies = movies)
+                MovieList(movies = movies, navController)
             }
         }
     }

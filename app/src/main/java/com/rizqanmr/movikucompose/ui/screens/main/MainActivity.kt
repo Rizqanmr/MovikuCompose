@@ -6,7 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.movikucompose.R
+import com.rizqanmr.movikucompose.ui.screens.detail.DetailScreen
 import com.rizqanmr.movikucompose.ui.screens.home.HomeScreen
 import com.rizqanmr.movikucompose.ui.theme.MovikuComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,8 +25,20 @@ class MainActivity : ComponentActivity() {
         setContent {
             val darkTheme = viewModel.isDarkTheme.observeAsState(false)
             MovikuComposeTheme(darkTheme = darkTheme.value) {
-                val appName = R.string.app_name
-                HomeScreen(viewModel, appName)
+                val navController = rememberNavController()
+
+                NavHost(
+                    navController = navController,
+                    startDestination = "home"
+                ) {
+                    composable("home") {
+                        HomeScreen(viewModel, R.string.app_name, navController)
+                    }
+
+                    composable("detail") {
+                        DetailScreen(navController)
+                    }
+                }
             }
         }
     }

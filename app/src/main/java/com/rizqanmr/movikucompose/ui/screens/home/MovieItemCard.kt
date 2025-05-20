@@ -1,6 +1,7 @@
 package com.rizqanmr.movikucompose.ui.screens.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -33,13 +34,14 @@ import com.example.movikucompose.R
 import com.rizqanmr.movikucompose.data.models.ItemMovieModel
 
 @Composable
-fun MovieItemCard(movie: ItemMovieModel) {
+fun MovieItemCard(movie: ItemMovieModel, onClick: () -> Unit) {
     Card(
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(6.dp),
         modifier = Modifier
             .width(180.dp)
             .padding(8.dp)
+            .clickable { onClick() }
     ) {
         Column(
             modifier = Modifier.fillMaxWidth()

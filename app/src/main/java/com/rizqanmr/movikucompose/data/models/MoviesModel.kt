@@ -1,13 +1,14 @@
 package com.rizqanmr.movikucompose.data.models
 
 import android.annotation.SuppressLint
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import com.rizqanmr.movikucompose.data.Constant
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.SimpleDateFormat
+import java.util.Locale
 
 data class MoviesModel(
     @SerializedName("page") val page: Int = 0,
@@ -16,6 +17,7 @@ data class MoviesModel(
     @SerializedName("total_results") val totalResults: Int = 0
 )
 
+@Parcelize
 data class ItemMovieModel(
     @SerializedName("overview") val overview: String? = "",
     @SerializedName("original_language") val originalLanguage: String? = "",
@@ -30,7 +32,7 @@ data class ItemMovieModel(
     @SerializedName("id") val id: Int = 0,
     @SerializedName("adult") val adult: Boolean? = false,
     @SerializedName("vote_count") val voteCount: Int? = 0
-) {
+) : Parcelable {
     @SuppressLint("SimpleDateFormat")
     fun getFormattedDate(): String? {
         return try {
@@ -57,5 +59,14 @@ data class ItemMovieModel(
 
     fun getUrlBackdrop(): String {
         return Constant.URL_BACKDROP + backdropPath
+    }
+
+    fun getLanguageName(): String {
+        return try {
+            val locale = Locale(originalLanguage ?: "")
+            locale.getDisplayLanguage(locale).replaceFirstChar { it.uppercase() }
+        } catch (e: Exception) {
+            "Unknown"
+        }
     }
 }

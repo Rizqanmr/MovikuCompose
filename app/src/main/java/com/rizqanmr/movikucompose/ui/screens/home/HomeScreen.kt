@@ -8,13 +8,15 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.rizqanmr.movikucompose.ui.screens.main.MainViewModel
 import com.rizqanmr.movikucompose.ui.screens.main.TopAppBar
 
 @Composable
 fun HomeScreen(
     viewModel: MainViewModel = hiltViewModel(),
-    @StringRes titleResource: Int
+    @StringRes titleResource: Int,
+    navController: NavController
 ) {
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -27,7 +29,7 @@ fun HomeScreen(
                     viewModel.performAction(MainViewModel.Action.SwitchTheme)
                 }
             )
-            TabWithPager()
+            TabWithPager(navController = navController)
         }
     }
 }
