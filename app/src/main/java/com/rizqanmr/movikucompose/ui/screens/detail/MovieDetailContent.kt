@@ -37,19 +37,26 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.movikucompose.R
+import com.rizqanmr.movikucompose.data.Constant
+import com.rizqanmr.movikucompose.data.models.DetailMovieModel
 import com.rizqanmr.movikucompose.data.models.ItemMovieModel
 import com.rizqanmr.movikucompose.ui.components.MovieAppBar
+import com.rizqanmr.movikucompose.ui.components.YouTubePlayer
 import com.rizqanmr.movikucompose.ui.theme.LightRed
 
 @Composable
-fun MovieDetailContent(movie: ItemMovieModel, navController: NavController, onClickBack: () -> Unit) {
+fun MovieDetailContent(
+    movie: ItemMovieModel,
+    detail: DetailMovieModel,
+    navController: NavController
+) {
     Scaffold(
         topBar = {
             MovieAppBar(
                 title = "Detail Movie",
-                onBackClick = { navController.popBackStack() },
                 backgroundColor = LightRed,
-                contentColor = MaterialTheme.colorScheme.surface
+                contentColor = MaterialTheme.colorScheme.surface,
+                onClickBack = { navController.popBackStack() },
             )
         }
     ) { padding ->
@@ -178,8 +185,18 @@ fun MovieDetailContent(movie: ItemMovieModel, navController: NavController, onCl
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(movie.overview.orEmpty())
 
-                Spacer(modifier = Modifier.height(16.dp))
-                Text(stringResource(R.string.official_trailer), style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                val videoItem = detail.videos?.results?.find { it.type == Constant.TRAILER }
+                val videoId = videoItem?.key
+                if (!videoId.isNullOrEmpty()) {
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(
+                        text = stringResource(R.string.official_trailer),
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    YouTubePlayer(videoId = videoId)
+                }
             }
         }
     }

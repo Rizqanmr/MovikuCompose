@@ -16,9 +16,9 @@ import androidx.compose.ui.graphics.Color
 @Composable
 fun MovieAppBar(
     title: String? = null,
-    onBackClick: () -> Unit,
     backgroundColor: Color = Color.Transparent,
-    contentColor: Color = MaterialTheme.colorScheme.surface
+    contentColor: Color = MaterialTheme.colorScheme.surface,
+    onClickBack: () -> Unit
 ) {
     TopAppBar(
         title = {
@@ -30,7 +30,7 @@ fun MovieAppBar(
             }
         },
         navigationIcon = {
-            IconButton(onClick = onBackClick) {
+            IconButton(onClick = onClickBack) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
                     contentDescription = "Back",

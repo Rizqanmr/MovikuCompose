@@ -65,6 +65,9 @@ hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", ve
 # Paging
 paging-compose = { module = "androidx.paging:paging-compose", version.ref = "paging-compose" }
 
+# YouTube Player
+youtubeplayer = { module = "com.pierfrancescosoffritti.androidyoutubeplayer:core", version = "12.1.0" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
