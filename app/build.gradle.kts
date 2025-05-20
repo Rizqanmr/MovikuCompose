@@ -109,4 +109,6 @@ dependencies {
 
     // Youtube Player
     implementation(libs.youtubeplayer)
+
+    implementation(libs.accompanist.navigation.animation)
 }

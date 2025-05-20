@@ -56,7 +56,7 @@ fun MovieDetailContent(
                 title = "Detail Movie",
                 backgroundColor = LightRed,
                 contentColor = MaterialTheme.colorScheme.surface,
-                onClickBack = { navController.popBackStack() },
+                onClickBack = { navController.popBackStack("home", inclusive = false) },
             )
         }
     ) { padding ->
