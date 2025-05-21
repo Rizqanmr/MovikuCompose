@@ -22,7 +22,11 @@ import androidx.paging.compose.LazyPagingItems
 import com.rizqanmr.movikucompose.data.models.ItemMovieModel
 
 @Composable
-fun MovieList(movies: LazyPagingItems<ItemMovieModel>, navController: NavController) {
+fun MovieList(
+    movies: LazyPagingItems<ItemMovieModel>,
+    navController: NavController,
+    homeViewModel: HomeViewModel
+) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = Modifier.fillMaxSize(),
@@ -52,7 +56,7 @@ fun MovieList(movies: LazyPagingItems<ItemMovieModel>, navController: NavControl
                 items(movies.itemCount) { index ->
                     val item = movies[index]
                     item?.let {
-                        MovieItemCard(it) {
+                        MovieItemCard(homeViewModel = homeViewModel, movie = it) {
                             navController.currentBackStackEntry?.savedStateHandle?.set("movie", it)
                             navController.navigate("detail")
                         }

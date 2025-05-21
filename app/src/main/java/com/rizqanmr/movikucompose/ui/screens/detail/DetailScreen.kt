@@ -13,12 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.rizqanmr.movikucompose.data.models.ItemMovieModel
+import com.rizqanmr.movikucompose.ui.screens.home.HomeViewModel
 
 @Composable
 fun DetailScreen(
     navController: NavController,
     viewModel: DetailViewModel = hiltViewModel()
 ) {
+    val homeViewModel: HomeViewModel = hiltViewModel()
     val movie = navController.previousBackStackEntry?.savedStateHandle?.get<ItemMovieModel>("movie")
     val detailMovie by viewModel.detailMovie.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
@@ -52,7 +54,8 @@ fun DetailScreen(
             MovieDetailContent(
                 movie = movie,
                 detail = detailMovie!!,
-                navController = navController
+                navController = navController,
+                homeViewModel = homeViewModel
             )
         }
         else -> {

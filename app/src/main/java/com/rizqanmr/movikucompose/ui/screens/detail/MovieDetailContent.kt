@@ -2,6 +2,7 @@ package com.rizqanmr.movikucompose.ui.screens.detail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,19 +12,24 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -42,14 +48,17 @@ import com.rizqanmr.movikucompose.data.models.DetailMovieModel
 import com.rizqanmr.movikucompose.data.models.ItemMovieModel
 import com.rizqanmr.movikucompose.ui.components.MovieAppBar
 import com.rizqanmr.movikucompose.ui.components.YouTubePlayer
+import com.rizqanmr.movikucompose.ui.screens.home.HomeViewModel
 import com.rizqanmr.movikucompose.ui.theme.LightRed
 
 @Composable
 fun MovieDetailContent(
     movie: ItemMovieModel,
     detail: DetailMovieModel,
-    navController: NavController
+    navController: NavController,
+    homeViewModel: HomeViewModel
 ) {
+    val isFavorite by homeViewModel.isFavoriteFlow(movie.id).collectAsState(initial = false)
     Scaffold(
         topBar = {
             MovieAppBar(
@@ -103,12 +112,33 @@ fun MovieDetailContent(
                         .weight(1f)
                         .padding(bottom = 16.dp, top = 36.dp)
                 ) {
-                    Text(
-                        text = movie.title.orEmpty(),
-                        style = MaterialTheme.typography.titleLarge.copy(color = Color.Black),
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis
-                    )
+                    Row(
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.Top,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
+                        Text(
+                            text = movie.title.orEmpty(),
+                            style = MaterialTheme.typography.titleLarge.copy(color = Color.Black),
+                            maxLines = 2,
+                            overflow = TextOverflow.Ellipsis
+                        )
+
+                        Box(
+                            modifier = Modifier.wrapContentSize()
+                        ) {
+                            IconButton(
+                                onClick = { homeViewModel.toggleFavorite(movie.id) }
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Favorite,
+                                    contentDescription = "Favorite",
+                                    tint = if (isFavorite) Color.Red else Color.Gray
+                                )
+                            }
+                        }
+                    }
 
                     Spacer(modifier = Modifier.height(4.dp))
 

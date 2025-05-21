@@ -1,9 +1,7 @@
 package com.rizqanmr.movikucompose.ui.screens.home
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.MaterialTheme
@@ -96,7 +94,7 @@ fun TabWithPager(
             val genre = genres.getOrNull(page)
             genre?.let {
                 viewModel.onGenreSelected(it.id ?: 0)
-                MovieList(movies = movies, navController)
+                MovieList(movies = movies, navController, homeViewModel = viewModel)
             }
         }
     }
