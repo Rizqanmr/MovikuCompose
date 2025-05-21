@@ -1,6 +1,6 @@
 [versions]
 agp = "8.6.0"
-kotlin = "1.9.0"
+kotlin = "1.9.10"
 coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -21,7 +21,11 @@ android-library = "7.4.1"
 hilt-android = "2.50"
 ksp = "1.9.10-1.0.13"
 accompanist = "0.32.0"
-datastore = "1.0.0"
+datastore = "1.1.7"
+mockk = "1.13.9"
+junitJunit = "4.13.2"
+archCore = "2.2.0"
+composeCompiler = "1.5.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -72,6 +76,12 @@ paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pag
 youtubeplayer = { module = "com.pierfrancescosoffritti.androidyoutubeplayer:core", version = "12.1.0" }
 
 accompanist-navigation-animation = { module = "com.google.accompanist:accompanist-navigation-animation", version.ref = "accompanist" }
+
+# For Testing
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+junit-junit = { group = "junit", name = "junit", version.ref = "junitJunit" }
+androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "archCore" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -20,7 +20,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
@@ -34,9 +33,10 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _genres = MutableStateFlow<List<GenresItem>>(emptyList())
-    val genres: StateFlow<List<GenresItem>> = _genres.asStateFlow()
     private val _favorites = MutableStateFlow<Map<Int, Boolean>>(emptyMap())
     private val _selectedGenreId = MutableStateFlow<Int?>(null)
+    val selectedGenreId: StateFlow<Int?> get() = _selectedGenreId
+    val genres: StateFlow<List<GenresItem>> get() = _genres
 
     init {
         getGenres()
@@ -47,7 +47,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun getGenres() {
+    fun getGenres() {
         viewModelScope.launch {
             when (val result = movieRepository.getGenres()) {
                 is Result.Success -> {
